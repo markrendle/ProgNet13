@@ -23,6 +23,5 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-typescript');
-    grunt.loadTasks('grunt.tasks');
     grunt.registerTask('default', ['typescript', 'uglify']);
 }
