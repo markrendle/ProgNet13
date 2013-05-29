@@ -1,0 +1,11 @@
+{
+	"name": "BedAndBroadband",
+	"version": "1.0.0",
+	"dependencies": {
+		"grunt": ">=0.4.1",
+		"grunt-contrib-uglify": ">=0.2.1",
+		"grunt-typescript": ">=0.1.6",
+		"typescript": ">=0.8.3"
+	},
+	"private":"true"
+}
