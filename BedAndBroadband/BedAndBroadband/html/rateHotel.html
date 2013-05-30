@@ -1,0 +1,20 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="dc.cancel()">x</button>
+    <h3>Rate {{dc.hotel.name}}, {{dc.hotel.city}}</h3>
+</div>
+<div class="modal-body">
+    <form name="rate" ng-submit="dc.rate()">
+        <div>
+            <label for="quality">Quality</label>
+            <rating id="quality" value="dc.rating.quality" max="10"/>
+        </div>
+        <label for="download">Download Mb/s</label>
+        <input type="number" step="any" name="download" ng-model="dc.rating.downloadMbps"/>
+        <label for="upload">Upload Mb/s</label>
+        <input type="number" step="any" name="upload" ng-model="dc.rating.uploadMbps"/>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="!rate.$valid" ng-click="dc.rate()">Rate</button>
+    <button class="btn" aria-hidden="true" ng-click="dc.cancel()">Cancel</button>
+</div>

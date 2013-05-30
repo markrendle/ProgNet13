@@ -44,6 +44,17 @@ module Services {
             return deferred.promise;
         }
 
+        rate(hotel: Models.Hotel, rating: Models.Rating) {
+            var rateLink = Hypermedia.getLink(hotel, "rate");
+            var deferred = this.$q.defer();
+            this.$http.post(rateLink, rating)
+                .success(() => deferred.resolve())
+                .error((data, status) => {
+                    deferred.reject("Error " + status);
+                });
+            return deferred.promise;
+        }
+
         private averageRatings(hotels: Models.Hotel[]) {
             hotels.forEach((hotel: Models.Hotel) => {
                 hotel.averageQuality = (hotel.ratings || []).map((r: Models.Rating) => r.quality).average();

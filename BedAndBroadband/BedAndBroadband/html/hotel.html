@@ -1,5 +1,16 @@
 ﻿<div class="container">
     <div class="row">
         <h1>{{dc.hotel.name}}</h1>
+        <div>
+            {{dc.hotel.address}}<br/>
+            {{dc.hotel.city}}<br/>
+            {{dc.hotel.postcode}}<br/>
+        </div>
     </div>
+    <div class="row">
+        Connection types:
+        <span ng-show="dc.hotel.wired"> Wired,</span>
+        <span ng-show="dc.hotel.wireless"> Wireless</span>
+    </div>
+    <button class="btn btn-success" ng-click="dc.rate()">Add your rating...</button>
 </div>

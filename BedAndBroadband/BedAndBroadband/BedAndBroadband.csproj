@@ -103,6 +103,10 @@
     <Content Include="App\Controllers\HotelController.js">
       <DependentUpon>HotelController.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="App\Controllers\RateHotelController.ts" />
+    <Content Include="App\Controllers\RateHotelController.js">
+      <DependentUpon>RateHotelController.ts</DependentUpon>
+    </Content>
     <Content Include="App\Models\hotel.js">
       <DependentUpon>hotel.ts</DependentUpon>
     </Content>
@@ -117,6 +121,10 @@
     <Content Include="App\Utils\dateReviver.js">
       <DependentUpon>dateReviver.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="App\Utils\LinkHelper.ts" />
+    <Content Include="App\Utils\LinkHelper.js">
+      <DependentUpon>LinkHelper.ts</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -127,6 +135,7 @@
     <Content Include="Gruntfile.js" />
     <Content Include="html\home.html" />
     <Content Include="html\hotel.html" />
+    <Content Include="html\rateHotel.html" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
@@ -438,6 +447,7 @@
     <Content Include="Scripts\sugar-full.development.js" />
     <Content Include="Scripts\sugar-full.min.js" />
     <Content Include="Scripts\sugar.min.js" />
+    <Content Include="Scripts\typings\angular-ui\angular-ui-0.3.0.d.ts" />
     <Content Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <Content Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
     <Content Include="Scripts\typings\angularjs\angular-resource.d.ts" />

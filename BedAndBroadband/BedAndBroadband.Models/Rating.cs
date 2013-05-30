@@ -9,5 +9,6 @@
         public decimal DownloadMbps { get; set; }
         public decimal UploadMbps { get; set; }
         public DateTimeOffset Date { get; set; }
+        public int HotelId { get; set; }
     }
 }

@@ -1,3 +1,13 @@
+var Hypermedia;
+(function (Hypermedia) {
+    function getLink(resource, rel) {
+        var link = resource.links.find(function (l) {
+            return l.rel === rel;
+        });
+        return link ? link.href : null;
+    }
+    Hypermedia.getLink = getLink;
+})(Hypermedia || (Hypermedia = {}));
 var Services;
 (function (Services) {
     var HotelService = (function () {
@@ -40,6 +50,16 @@ var Services;
                 }
             }).success(function (results) {
                 deferred.resolve(_this.averageRatings(results));
+            }).error(function (data, status) {
+                deferred.reject("Error " + status);
+            });
+            return deferred.promise;
+        };
+        HotelService.prototype.rate = function (hotel, rating) {
+            var rateLink = Hypermedia.getLink(hotel, "rate");
+            var deferred = this.$q.defer();
+            this.$http.post(rateLink, rating).success(function () {
+                return deferred.resolve();
             }).error(function (data, status) {
                 deferred.reject("Error " + status);
             });
@@ -92,10 +112,11 @@ var HomeController = (function () {
     return HomeController;
 })();
 var HotelController = (function () {
-    function HotelController(hotelService, $routeParams, $window) {
+    function HotelController(hotelService, $routeParams, $window, $dialog) {
         this.hotelService = hotelService;
         this.$routeParams = $routeParams;
         this.$window = $window;
+        this.$dialog = $dialog;
         var _this = this;
         hotelService.find($routeParams["id"]).then(function (hotel) {
             _this.hotel = hotel;
@@ -106,9 +127,56 @@ var HotelController = (function () {
     HotelController.$inject = [
         "hotelService", 
         "$routeParams", 
-        "$window"
+        "$window", 
+        "$dialog"
     ];
+    HotelController.prototype.rate = function () {
+        var _this = this;
+        var dialog = this.$dialog.dialog({
+            templateUrl: "html/rateHotel.html",
+            controller: "RateHotelController",
+            resolve: {
+                hotel: function () {
+                    return _this.hotel;
+                }
+            }
+        });
+        dialog.open();
+    };
     return HotelController;
+})();
+var RateHotelController = (function () {
+    function RateHotelController($scope, $window, hotelService, dialog, hotel) {
+        this.$window = $window;
+        this.hotelService = hotelService;
+        this.dialog = dialog;
+        this.hotel = hotel;
+        $scope.dc = this;
+        this.rating = {
+            quality: 0,
+            downloadMbps: 0,
+            uploadMbps: 0
+        };
+    }
+    RateHotelController.$inject = [
+        "$scope", 
+        "$window", 
+        "hotelService", 
+        "dialog", 
+        "hotel"
+    ];
+    RateHotelController.prototype.cancel = function () {
+        this.dialog.close(false);
+    };
+    RateHotelController.prototype.rate = function () {
+        var _this = this;
+        this.hotelService.rate(this.hotel, this.rating).then(function () {
+            return _this.dialog.close(true);
+        }, function (error) {
+            return _this.$window.alert(error);
+        });
+    };
+    return RateHotelController;
 })();
 var Utils;
 (function (Utils) {

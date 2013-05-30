@@ -21,7 +21,7 @@ var Services;
         };
         HotelService.prototype.find = function (id) {
             var deferred = this.$q.defer();
-            this.$http.get("/hotels/" + id).success(function (data) {
+            this.$http.get("/hotel/" + id).success(function (data) {
                 deferred.resolve(data);
             }).error(function (data, status) {
                 if(status === 404) {
@@ -40,6 +40,16 @@ var Services;
                 }
             }).success(function (results) {
                 deferred.resolve(_this.averageRatings(results));
+            }).error(function (data, status) {
+                deferred.reject("Error " + status);
+            });
+            return deferred.promise;
+        };
+        HotelService.prototype.rate = function (hotel, rating) {
+            var rateLink = Hypermedia.getLink(hotel, "rate");
+            var deferred = this.$q.defer();
+            this.$http.post(rateLink, rating).success(function () {
+                return deferred.resolve();
             }).error(function (data, status) {
                 deferred.reject("Error " + status);
             });

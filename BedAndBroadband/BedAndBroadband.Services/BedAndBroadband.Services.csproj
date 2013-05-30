@@ -51,6 +51,7 @@
     <Compile Include="GetHotels.cs" />
     <Compile Include="GetRecentlyRatedHotels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateHotel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

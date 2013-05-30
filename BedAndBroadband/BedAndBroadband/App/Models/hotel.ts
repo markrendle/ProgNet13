@@ -13,13 +13,14 @@ module Models {
         averageQuality?: number;
         averageUpload?: number;
         averageDownload?: number;
+        links?: Hypermedia.ILink[];
     }
 
     export interface Rating {
-        id: number;
+        id?: number;
         quality: number;
         downloadMbps: number;
         uploadMbps: number;
-        date: Date;
+        date?: Date;
     }
 }

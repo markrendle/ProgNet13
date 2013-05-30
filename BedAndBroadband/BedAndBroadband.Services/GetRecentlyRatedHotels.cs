@@ -10,9 +10,10 @@ namespace BedAndBroadband.Services
     using Simple.Data;
     using Simple.Web;
     using Simple.Web.Behaviors;
+    using Simple.Web.Http;
 
     [UriTemplate("/hotels/recentlyrated")]
-    public class GetRecentlyRatedHotels : IGet, IOutput<IEnumerable<Hotel>>
+    public class GetRecentlyRatedHotels : IGet, IOutput<IEnumerable<Hotel>>, ICacheability
     {
         private readonly dynamic _db = Database.OpenNamedConnection("Default");
         public Status Get()
@@ -27,5 +28,7 @@ namespace BedAndBroadband.Services
                 return _db.Hotels.All().WithRatings().OrderByLastRatingDateDescending().Take(5);
             }
         }
+
+        public CacheOptions CacheOptions { get { return CacheOptions.DisableCaching; } }
     }
 }
