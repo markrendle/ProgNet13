@@ -445,16 +445,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BedAndBroadband.Models\BedAndBroadband.Models.csproj">
-      <Project>{a5f6361b-2be1-4a64-976d-86dcdaa141c1}</Project>
-      <Name>BedAndBroadband.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BedAndBroadband.Services\BedAndBroadband.Services.csproj">
-      <Project>{22feb07a-d1b6-4b8e-be81-9491d7818e81}</Project>
-      <Name>BedAndBroadband.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
