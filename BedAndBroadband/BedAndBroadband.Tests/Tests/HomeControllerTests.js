@@ -1,3 +1,12 @@
+/// <chutzpah_reference path="../Scripts/sugar-full.development.js" />
+/// <chutzpah_reference path="../Scripts/angular.js" />
+/// <chutzpah_reference path="../Scripts/angular-mocks.js" />
+/// <chutzpah_reference path="../app.js" />
+/// <chutzpah_reference path="../Scripts/jasmine/jasmine.js" />
+/// <reference path="../Scripts/typings/jasmine/jasmine.d.ts" />
+/// <reference path="../Scripts/typings/angularjs/angular-mocks.d.ts" />
+/// <reference path="../Scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="../app.d.ts" />
 describe("HomeController", function () {
     describe("construction", function () {
         var ctrl, $httpBackend;

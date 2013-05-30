@@ -22,12 +22,36 @@ module Models {
         date: Date;
     }
 }
+module Services {
+    class HotelService {
+        private $http;
+        private $q;
+        static $inject: string[];
+        constructor($http: ng.IHttpService, $q: ng.IQService);
+        public getRecentlyRated(): ng.IPromise;
+        public find(id: number): ng.IPromise;
+        public search(query: string): ng.IPromise;
+        private averageRatings(hotels);
+    }
+}
 class HomeController {
     private $http;
+    private $window;
     public hotels: Models.Hotel[];
+    public searchResults: Models.Hotel[];
+    public query: string;
     static $inject: string[];
-    constructor($http: ng.IHttpService);
+    constructor($http: ng.IHttpService, $window: ng.IWindowService);
+    public search(): void;
     private averageRatings(hotels);
+}
+class HotelController {
+    private hotelService;
+    private $routeParams;
+    private $window;
+    public hotel: Models.Hotel;
+    static $inject: string[];
+    constructor(hotelService: Services.HotelService, $routeParams: ng.IRouteParamsService, $window: ng.IWindowService);
 }
 module Utils {
     function transformResponse(data);

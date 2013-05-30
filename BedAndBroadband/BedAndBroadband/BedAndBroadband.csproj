@@ -99,6 +99,10 @@
       <DependentUpon>HomeController.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="App\Models\hotel.ts" />
+    <TypeScriptCompile Include="App\Controllers\HotelController.ts" />
+    <Content Include="App\Controllers\HotelController.js">
+      <DependentUpon>HotelController.ts</DependentUpon>
+    </Content>
     <Content Include="App\Models\hotel.js">
       <DependentUpon>hotel.ts</DependentUpon>
     </Content>
@@ -106,6 +110,10 @@
       <DependentUpon>references.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="App\Utils\dateReviver.ts" />
+    <TypeScriptCompile Include="App\Services\HotelService.ts" />
+    <Content Include="App\Services\HotelService.js">
+      <DependentUpon>HotelService.ts</DependentUpon>
+    </Content>
     <Content Include="App\Utils\dateReviver.js">
       <DependentUpon>dateReviver.ts</DependentUpon>
     </Content>
@@ -118,6 +126,7 @@
     <Content Include="Content\site.css" />
     <Content Include="Gruntfile.js" />
     <Content Include="html\home.html" />
+    <Content Include="html\hotel.html" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
@@ -450,6 +459,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Scripts\ui-bootstrap-0.3.0.min.js.map">
+      <DependentUpon>ui-bootstrap-0.3.0.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

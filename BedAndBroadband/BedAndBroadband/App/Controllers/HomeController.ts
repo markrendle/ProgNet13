@@ -2,18 +2,29 @@
 
 class HomeController{
     hotels: Models.Hotel[];
-    static $inject = ["$http"];
-    constructor(private $http: ng.IHttpService) {
+    searchResults: Models.Hotel[];
+    query: string;
+    static $inject = ["$http", "$window"];
+    constructor(private $http: ng.IHttpService, private $window: ng.IWindowService) {
         $http.get("/hotels/recentlyRated")
             .success((data: Models.Hotel[]) => {
-                this.averageRatings(data);
+                this.hotels = this.averageRatings(data);
             });
     }
 
+    search() {
+        this.$http.get("/hotels", { params: { query: this.query } })
+            .success((results) => {
+                this.searchResults = this.averageRatings(results);
+            })
+            .error((data, status) => {});
+    }
+    
+
     private averageRatings(hotels: Models.Hotel[]) {
         hotels.forEach((hotel: Models.Hotel) => {
-            hotel.averageQuality = hotel.ratings.map((r) => r.quality).average();
+            hotel.averageQuality = (hotel.ratings || []).map((r: Models.Rating) => r.quality).average();
         });
-        this.hotels = hotels;
+        return hotels;
     }
 }

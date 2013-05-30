@@ -330,6 +330,9 @@
     <Content Include="Scripts\jasmine-samples\SpecHelper.js" />
     <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine.js" />
+    <Content Include="Scripts\sugar-full.development.js" />
+    <Content Include="Scripts\sugar-full.min.js" />
+    <Content Include="Scripts\sugar.min.js" />
     <Content Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <Content Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
     <Content Include="Scripts\typings\angularjs\angular-resource.d.ts" />

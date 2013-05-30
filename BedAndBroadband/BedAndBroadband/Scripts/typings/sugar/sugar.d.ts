@@ -2077,7 +2077,7 @@ interface Array {
 	*   [{age:35},{age:11},{age:11}].average('age') -> 19
 	*
 	***/
-	average(map?: (n: number) => number): number;
+	average(map?: (item: any) => number): number;
 
 	/***
 	* Clones the array.

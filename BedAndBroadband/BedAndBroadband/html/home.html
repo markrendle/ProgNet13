@@ -1,7 +1,22 @@
 ﻿<div class="container">
-    <h1>Recently rated</h1>
-    <div ng-hide="!!dc.hotels">Loading...</div>
-    <div ng-repeat="hotel in dc.hotels">
-        <h3>{{hotel.name}}</h3>
+    <div class="row">
+        <h1>Recently rated</h1>
+        <div ng-hide="!!dc.hotels">Loading...</div>
+        <div ng-repeat="hotel in dc.hotels">
+            <span style="font-size: 1.5em">{{hotel.name}}</span>
+            <rating value="hotel.averageQuality" max="10" readonly="true"/>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Find a hotel</h1>
+        <form ng-submit="dc.search()" class="form-search">
+            <input type="text" class="search-query input-xxlarge" ng-model="dc.query"/>
+            <button type="submit" class="btn">Search</button>
+        </form>
+        <ul>
+            <li ng-repeat="hotel in dc.searchResults">
+                <a ng-href="#/hotel/{{hotel.id}}">{{hotel.name}}</a>
+            </li>
+        </ul>
     </div>
 </div>
