@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +15,6 @@ namespace BedAndBroadband.Data
         public string Country { get; set; }
         public bool Wired { get; set; }
         public bool Wireless { get; set; }
+        public List<Rating> Ratings { get; set; }
     }
 }

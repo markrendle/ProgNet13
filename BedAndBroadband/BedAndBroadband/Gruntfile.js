@@ -7,7 +7,8 @@ module.exports = function (grunt) {
                 src: ['app/app.ts'],
                 dest: 'Scripts/app.js',
                 options: {
-                    target: 'ES5'
+                    target: 'ES5',
+                    declaration: true
                 }
             }
         },

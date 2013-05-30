@@ -24,7 +24,7 @@ namespace BedAndBroadband.Services
         {
             get
             {
-                return _db.Hotels.All().OrderByLastRatingDateDescending().Take(5);
+                return _db.Hotels.All().WithRatings().OrderByLastRatingDateDescending().Take(5);
             }
         }
     }
